@@ -52,7 +52,6 @@ void first_sigma_sharing(int rank, int size, int n1, int n2, int n3) {
         double *temp;
         for (int i = 0; i < N; i++) {
             pthread_join(threads[i], (void **) &temp);
-            fprintf(stderr, "temp is %f<<\n", *temp);
             inter_result += *temp;
         }
         MPI_Reduce(&inter_result, 0, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
